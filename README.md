@@ -1,2 +1,2 @@
-# ppm
-Personal Password Manager - pwm fork that uses vim + gnupg plugin
+# spw
+Secure Passwords - pwm fork for managing passwords securly with Vim + gnupg + Vim gnupg plugin
