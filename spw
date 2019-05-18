@@ -15,7 +15,7 @@ SELFPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 EDITOR="vim"
 
 # gnupg.vim vars
-export GPG_TTY=`tty` 
+export GPG_TTY=$(tty)
 
 #term colors
 RED=$(tput setaf 1)
@@ -139,7 +139,7 @@ setupspw(){
 
 	if [[ "$spwcopy" != [nN] ]]; then
 		if touch "$SPW_INSTALL_PATH"; then
-			cat SELFPATH > "$SPW_INSTALL_PATH"
+			cp -f "$SELFPATH/spw" "$SPW_INSTALL_PATH"
 			chmod +x "$SPW_INSTALL_PATH"
 			utp "Installed to \"$SPW_INSTALL_PATH\"."
 		else
