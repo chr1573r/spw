@@ -112,12 +112,12 @@ sumver(){
 # /checksum related
 
 # fs operations
+# use srm for deletion if available, otherwise fallback to rm
 sdel(){
 	if hash srm 2>/dev/null; then
         srm "$1"
     else
-    	utpw "srm not found, using plain rm for deletion"
-        rm -f "$1"
+        rm "$1"
     fi
 }
 # /fs operations
