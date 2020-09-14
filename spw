@@ -261,10 +261,12 @@ spwmain(){
 		open|edit)
 			fver "${PDIR}/$2.asc" || utpf "No entry for ${CYAN}'$2'${DEF} found."
 			if fver "${PDIR}/$2.bak"; then
-				utpn "An old backup of ${YELLOW}'$2'${DEF} was found ($PDIR/$2.bak). Overwrite? [y/N]"
-				read -n 1 spwoverwritebackup
-				[[ -z "$spwoverwritebackup" ]] || echo
-				[[ "$spwoverwritebackup" != [yY] ]] && utp "Aborting" && exit
+				if ! sumver "${PDIR}/$2.asc" "${PDIR}/$2.bak"; then
+					utpn "An old backup of ${YELLOW}'$2'${DEF} was found ($PDIR/$2.bak). Overwrite? [y/N]"
+					read -n 1 spwoverwritebackup
+					[[ -z "$spwoverwritebackup" ]] || echo
+					[[ "$spwoverwritebackup" != [yY] ]] && utp "Aborting" && exit
+				fi
 			fi
 			cp "${PDIR}/$2.asc" "${PDIR}/$2.bak"
 			fver "${PDIR}/$2.bak" || utpf "Failed to create backup of ${YELLOW}'$2'${DEF}, aborting"
