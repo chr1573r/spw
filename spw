@@ -254,6 +254,7 @@ spwmain(){
 		new)
 			[[ -z "$2" ]] && utpf "Please provide a filename"
 			fver "$PDIR/$2.asc" && utpf "Entry ${YELLOW}'$2'${DEF} already exists. Please edit or delete."
+			echo -ne "\033]0;spw - ${2}\007"
 			exsf "$EDITOR "$PDIR/$2.asc""
 			fver "$PDIR/$2.asc" || utpf "File not found, forgot to save?"
 			utp "Entry ${YELLOW}'$2'${DEF} stored!"
@@ -272,6 +273,7 @@ spwmain(){
 			fver "${PDIR}/$2.bak" || utpf "Failed to create backup of ${YELLOW}'$2'${DEF}, aborting"
 			sumver "${PDIR}/$2.asc" "${PDIR}/$2.bak" || { utp "Verification failed for backup of ${YELLOW}'$2'${DEF}, aborting." && exit; }
 			utp "Opening ${YELLOW}'$2'${DEF} ${CYAN}$(sumbin "$PDIR/$2.asc")"
+			echo -ne "\033]0;spw - ${2}\007"
 			exsf "$EDITOR "$PDIR/$2.asc""
 
 			if sumver "$PDIR/$2.asc" "$PDIR/$2.bak"; then
