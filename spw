@@ -1,7 +1,7 @@
 #!/bin/bash
 # SPW - Secure Passwords
-# Fork of pwm that relies on vim with the gnupg plugin to handle passwords
-# Safer than the temporary file apporach used by regular pwm.
+# Fork of chr1573r/pwm that relies on vim with the gnupg plugin to handle passwords
+# Safer than the temporary file apporach used by chr1573r/pwm.
 #
 # In addition to a working gnupg setup with a valid recipient (yourself usually),
 # this version also requires a working vim + gnupg plugin setup.
